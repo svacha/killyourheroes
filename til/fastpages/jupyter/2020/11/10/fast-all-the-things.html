@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Fast all the things | kill your heroes</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Fast all the things" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="How some new (to me) tools like nbdev, fastpages, and fastdoc might help me use notebooks for all the things." />
+<meta property="og:description" content="How some new (to me) tools like nbdev, fastpages, and fastdoc might help me use notebooks for all the things." />
+<link rel="canonical" href="https://svacha.github.io/killyourheroes/til/fastpages/jupyter/2020/11/10/fast-all-the-things.html" />
+<meta property="og:url" content="https://svacha.github.io/killyourheroes/til/fastpages/jupyter/2020/11/10/fast-all-the-things.html" />
+<meta property="og:site_name" content="kill your heroes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-10T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"How some new (to me) tools like nbdev, fastpages, and fastdoc might help me use notebooks for all the things.","url":"https://svacha.github.io/killyourheroes/til/fastpages/jupyter/2020/11/10/fast-all-the-things.html","@type":"BlogPosting","headline":"Fast all the things","dateModified":"2020-11-10T00:00:00-06:00","datePublished":"2020-11-10T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://svacha.github.io/killyourheroes/til/fastpages/jupyter/2020/11/10/fast-all-the-things.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/killyourheroes/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://svacha.github.io/killyourheroes/feed.xml" title="kill your heroes" /><link rel="shortcut icon" type="image/x-icon" href="/killyourheroes/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/killyourheroes/">kill your heroes</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/killyourheroes/about/">About Me</a><a class="page-link" href="/killyourheroes/search/">Search</a><a class="page-link" href="/killyourheroes/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">_Fast_ all the things</h1><p class="page-description">How some new (to me) tools like `nbdev`, `fastpages`, and `fastdoc` might help me use notebooks for all the things.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-11-10T00:00:00-06:00" itemprop="datePublished">
+        Nov 10, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/killyourheroes/categories/#til">til</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/killyourheroes/categories/#fastpages">fastpages</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/killyourheroes/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-11-10-fast-all-the-things.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="tldr">tldr<a class="anchor-link" href="#tldr"> </a></h2><p>TIL about some tools in the notebook ecosystem and maybe you'll be interested too.</p>
+<h2 id="What-led-me-here">What led me here<a class="anchor-link" href="#What-led-me-here"> </a></h2><p>With no prior context, I see several tweets in my feed about something involving the Code of Conduct at JupyterCon and some decision from NumFOCUS to apologize. An old colleague of mine commenting "Finally":</p>
+<p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Finally! <a href="https://t.co/iKSzRZlPAN">https://t.co/iKSzRZlPAN</a></p>&mdash; 🍂 🦃🥧 Jiahao Chen 陳家豪 @ 🏡🗽 (@acidflask) <a href="https://twitter.com/acidflask/status/1325782312919969792?ref_src=twsrc%5Etfw">November 9, 2020</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Update from NumFOCUS:<br />&quot;The board of directors voted that the talk of Jeremy Howard adhered to the JupyterCon Code of Conduct. Jeremy’s talk offers the kind of exchange of ideas that makes an intellectual community vibrant and healthy.&quot;<a href="https://t.co/He3pqgVohc">https://t.co/He3pqgVohc</a></p>&mdash; Jeremy Howard (@jeremyphoward) <a href="https://twitter.com/jeremyphoward/status/1325606466556895232?ref_src=twsrc%5Etfw">November 9, 2020</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<p>I'll admit that I was in the dark on who that is but that was enough spark my interest and take a further look.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What's-the-background">What's the background<a class="anchor-link" href="#What's-the-background"> </a></h2><p><a href="https://www.linkedin.com/in/howardjeremy/">Jeremy Howard</a>, apparently widely known and respected data scientist and founder of Fast.ai, gave a JupyterCon 2020 keynote talk "<a href="https://youtu.be/9Q6sLbz37gk">I like notebooks</a>" in response to a talk a couple years back from Joel Grus "<a href="https://youtu.be/7jiPeIFXb6U">I don't like notebooks</a>".</p>
+<p>I'd seen the video for the prior talk, defintely identified with many of the pain points, and got some good chuckles out of Joel's contrarian and joke-packed point of view. I also read the preview chapters for his new book "Ten Essays on Fizz Buzz", and I love his knack for finding deep perspectives from a superficial starting place.</p>
+<p>As a result of the code-of-conduct controversy, I watched Jeremy's talk and took down notes to read up and learn more. He gives Joel a lot of credit, and then disagrees with him, while pointing to a bunch of tools that help Jeremy solve the problems Joel listed. It was great stuff really, solid respect with on-topic discussion of details, and ultimately that's the message that came back from NumFOCUS after reviewing the complaints.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-did-I-learn-about">What did I learn about<a class="anchor-link" href="#What-did-I-learn-about"> </a></h2><p>The talk itself is worth watching, and depending on your prior exposure your eyes may be drawn to different tools, but mine focused in on three things: <code>nbdev</code>, <code>fastpages</code>, and <code>fastdoc</code>.</p>
+<h3 id="nbdev">nbdev<a class="anchor-link" href="#nbdev"> </a></h3><p>The majority of the frequent complaints against notebooks were addressed by <code>nbdev</code>. This is a tool for developing Python packages, creating documentation, and writing tests, all from within reproducible jupyter notebook environments.</p>
+<p>I'm looking forward to trying this out. With quite a few projects, I personally launch a notebook as the first place to explore and start developing, and then, when it feels like it reaches a transition point over to slightly more "robust engineering" project, code gets extracted into flat <code>.py</code> files or packages, and in the meantime I open another notebook as a scratchpad. That transition point does create a natural opportunity to pause, think, and refactor, but I'm excited to try out a workflow where the intended endpoint is a well-engineered notebook environment. If the <code>nbdev</code> library can help smooth out the experience, projects can move from launch to something more reliable very quickly.</p>
+<p>I don't know the details yet about how the interface for this library feels. One specific example pulled from the talk: if you create a Python class in a jupyter notebook, you would typically need to have all the methods defined in a single cell to get executed all together. The <code>nbdev</code> tooling exposes a <code>@patch</code> decorator that lets you attach methods to a class in whatever place in your code and documentation makes the most sense.</p>
+<h3 id="fastpages">fastpages<a class="anchor-link" href="#fastpages"> </a></h3><p>The <code>fastpages</code> tool appears to be a straightforward extension to the Jekyll blogging system to provide support for jupyter notebooks, including friendly features for including post metadata and control of showing or hiding or collapsing cell content.</p>
+<p>There are other tools in the notebook ecosystem for generating content to be delivered through a static site generator. I have created both markdown and html exports of notebook contents using <code>nbconvert</code> directly, or manually selecting "Download as" from the jupyter menu. That works for one-off posts but it's not a great workflow for frequent use or maintenance.</p>
+<h3 id="fastdoc">fastdoc<a class="anchor-link" href="#fastdoc"> </a></h3><p>The <code>fastdoc</code> tool can generate publication-quality digital and physical books from source content in jupyter notebooks via asciidoc. <a href="https://jupyterbook.org/intro.html">Jupyterbook</a> is the most similar tool I've heard of in this area. I'm curious to look deeper and figure out what benefits and differences there are, but more options are welcome for writing and editing source materials in jupyter with toolchains to target multiple output formats.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Putting-this-in-context">Putting this in context<a class="anchor-link" href="#Putting-this-in-context"> </a></h2><p>There's been a wide spectrum of efforts toward making notebooks more capable for doing "real work". The focus of the batch of tooling surfaced in Jeremy Howard's video bridges the gap between some of the software development and documentation workflows and the notebook environment.</p>
+<p>For data scientists, data engineers, and analysts working in large corporate environments, there's another category of tooling related to executing jobs on shared compute clusters, handling the DAG and scheduling needs. Netflix, amongst many other folks, built tooling (described initially in <a href="https://netflixtechblog.com/notebook-innovation-591ee3221233">this blog post</a>) to treat notebooks as both the primary code object and the immutable artifacts of any job execution.</p>
+<p>I'm interested to see how something like <code>nbdev</code> will help improve the experience between these categories.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="See-more">See more<a class="anchor-link" href="#See-more"> </a></h2><p>Just give me the links:</p>
+<ul>
+<li>Jeremy Howard's <a href="https://youtu.be/9Q6sLbz37gk">Jupytercon 2020 keynote video</a></li>
+<li>Joel Grus's "<a href="https://youtu.be/7jiPeIFXb6U">I don't like notebooks</a> talk</li>
+<li><a href="https://github.com/fastai/nbdev">nbdev</a></li>
+<li><a href="https://github.com/fastai/fastdoc">fastdoc</a></li>
+<li><a href="https://github.com/fastai/fastpages">fastpages</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="svacha/killyourheroes"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/killyourheroes/til/fastpages/jupyter/2020/11/10/fast-all-the-things.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/killyourheroes/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/killyourheroes/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/killyourheroes/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Appreciation and learning by destroying the glorified ideals we hold about ideas and human beings. Imagining the world complexly.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://twitter.com/dudeyo" title="dudeyo"><svg class="svg-icon grey"><use xlink:href="/killyourheroes/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
